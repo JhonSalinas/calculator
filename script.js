@@ -2,7 +2,7 @@
 //GET INPUT 
 
 // str = prompt('insert the expression at calculation',e.g. 2+2);
-str = '-1+3+-1+1+-3';
+str = '-1-1-1-';
 str = str.trim();
 
 //VALIDATE INPUT AND RUN
@@ -37,21 +37,55 @@ return str.match(/[+*/-]/) !== null;
 
 function calMath(str) {
 
+    console.log(str);
+
     if (str.match(/[+]/) !== null) {
 
-        const index = str.match(/[+]/).index;
-        const array = [str.slice(0,index) ,str.slice(index+1)]
+        // let index = str.match(/[+]/).index;
+        let index = str.lastIndexOf('+');
+        let array = [str.slice(0,index) ,str.slice(index+1)]
         let a = array[0];
+        console.log(`a in array is: ${a}`);
         let b = array[1];
-
+        console.log(`b in array is: ${b}`);
+        
         if(isNaN(+a)){
+            console.log(`a plus is: ${a}`)
             a = calMath(array[0]);
-        }else if(isNaN(+b)){
+            console.log(`a plus is: ${a}`)
+        }
+        
+        if(isNaN(+b)){
+            console.log(`b plus is: ${b}`)
             b = calMath(array[1]);
+            console.log(`b plus is: ${b}`)
         }
         
         return +a + +b;
         
+    } else if(str.match(/[-]/) !== null) {
+        
+        // let index = str.match(/[-]/).index;
+        let index = str.lastIndexOf('-');
+        let array = [str.slice(0,index) ,str.slice(index+1)]
+        let a = array[0];
+        console.log(`a in array is: ${a}`);
+        let b = array[1];
+        console.log(`b in array is: ${b}`);
+        
+        if(isNaN(+a)){
+            console.log(`a minus is: ${a}`)
+            a = calMath(array[0]);
+            console.log(`a minus is: ${a}`)
+        }
+        if(isNaN(+b)){
+            console.log(`b minus is: ${b}`)
+            b = calMath(array[1]);
+            console.log(`b minus is: ${b}`)
+        }
+        
+        return +a - +b;
+
     }
 }
 
