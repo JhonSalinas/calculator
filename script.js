@@ -2,7 +2,7 @@
 //GET INPUT 
 
 // str = prompt('insert the expression at calculation',e.g. 2+2);
-str = '20/20+1*5-5+';
+str = '1.1*1.1+1+2+3-9';
 str = str.trim();
 
 //VALIDATE INPUT AND RUN
