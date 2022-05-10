@@ -2,7 +2,7 @@
 //GET INPUT 
 
 // str = prompt('insert the expression at calculation',e.g. 2+2);
-str = '0*2*3*4';
+str = '20/20+1*5-5+';
 str = str.trim();
 
 //VALIDATE INPUT AND RUN
@@ -108,6 +108,29 @@ function calMath(str) {
         }
         
         return +a * +b;
+
+    }else if(str.match(/[/]/) !== null) {
+        
+        // let index = str.match(/[-]/).index;
+        let index = str.lastIndexOf('/');
+        let array = [str.slice(0,index) ,str.slice(index+1)]
+        let a = array[0];
+        console.log(`a in array is: ${a}`);
+        let b = array[1];
+        console.log(`b in array is: ${b}`);
+        
+        if(isNaN(+a)){
+            console.log(`a divide is: ${a}`)
+            a = calMath(array[0]);
+            console.log(`a divide is: ${a}`)
+        }
+        if(isNaN(+b)){
+            console.log(`b divide is: ${b}`)
+            b = calMath(array[1]);
+            console.log(`b divide is: ${b}`)
+        }
+        
+        return +a / +b;
 
     }
 }
