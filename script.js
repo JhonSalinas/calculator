@@ -1,32 +1,52 @@
+
+//GET INPUT 
+
 // str = prompt('insert the expression at calculation',e.g. 2+2);
-str = '5+1+2+3+69+4';
+str = '+1+2+3';
 str = str.trim();
 
-// console.log(str.match(/[+]/) !== 'null');
+//VALIDATE INPUT AND RUN
 
-// console.log(str.match(/[/*]/));
+if(isValidInput(str)) {
+    console.log(calMath(str));
+}
 
-function isMathDeclaration(str) {
+//FUNCTIONS
+
+function isValidInput(str) {
+    if(haveLetters(str)) {
+        console.log("please insert just only the symbols availables");
+        return false;;
+    }else if(!isMathStatement(str)) {
+        console.log("please insert available math statement");
+        return false;
+    }
+    return true;
+}
+
+function haveLetters(str) {
+    const regex = /[a-z]/ig;
+    return str.match(regex) !== null;
+}
+
+function isMathStatement(str) {
 return str.match(/[+*/-]/) !== null;
 } 
+
+//MAIN FUNCTION
 
 function calMath(str) {
 
     if (str.match(/[+]/) !== null) {
-        console.log(str);
-        const index = str.match(/[+]/).index;
-        console.log(index.index);
-        const array = [str.slice(0,index) ,str.slice(index+1)]
-        console.log(array);
-        let a = array[0];
-        console.log(a);
-        let b = array[1];
-        console.log(b);
-        
 
-        if (isMathDeclaration(a)) {
+        const index = str.match(/[+]/).index;
+        const array = [str.slice(0,index) ,str.slice(index+1)]
+        let a = array[0];
+        let b = array[1];
+
+        if (isMathStatement(a)) {
             a = calMath(array[0]);
-        } else if(isMathDeclaration(b)){
+        } else if(isMathStatement(b)){
             b = calMath(array[1]);
         }
 
@@ -34,8 +54,4 @@ function calMath(str) {
 
     }
 }
-
-console.log(calMath(str))
-
-
 
