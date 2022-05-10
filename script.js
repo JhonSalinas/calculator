@@ -2,7 +2,7 @@
 //GET INPUT 
 
 // str = prompt('insert the expression at calculation',e.g. 2+2);
-str = '-1-1-1-';
+str = '0*2*3*4';
 str = str.trim();
 
 //VALIDATE INPUT AND RUN
@@ -85,6 +85,29 @@ function calMath(str) {
         }
         
         return +a - +b;
+
+    } else if(str.match(/[*]/) !== null) {
+        
+        // let index = str.match(/[-]/).index;
+        let index = str.lastIndexOf('*');
+        let array = [str.slice(0,index) ,str.slice(index+1)]
+        let a = array[0];
+        console.log(`a in array is: ${a}`);
+        let b = array[1];
+        console.log(`b in array is: ${b}`);
+        
+        if(isNaN(+a)){
+            console.log(`a product is: ${a}`)
+            a = calMath(array[0]);
+            console.log(`a product is: ${a}`)
+        }
+        if(isNaN(+b)){
+            console.log(`b product is: ${b}`)
+            b = calMath(array[1]);
+            console.log(`b product is: ${b}`)
+        }
+        
+        return +a * +b;
 
     }
 }
