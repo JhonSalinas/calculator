@@ -2,7 +2,7 @@
 //GET INPUT 
 
 // str = prompt('insert the expression at calculation',e.g. 2+2);
-str = '+1+2+3';
+str = '-1+3+-1+1+-3';
 str = str.trim();
 
 //VALIDATE INPUT AND RUN
@@ -44,14 +44,14 @@ function calMath(str) {
         let a = array[0];
         let b = array[1];
 
-        if (isMathStatement(a)) {
+        if(isNaN(+a)){
             a = calMath(array[0]);
-        } else if(isMathStatement(b)){
+        }else if(isNaN(+b)){
             b = calMath(array[1]);
         }
-
+        
         return +a + +b;
-
+        
     }
 }
 
