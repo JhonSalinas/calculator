@@ -1,15 +1,10 @@
+//output selector
 
-//GET INPUT 
+const output = document.querySelector('.screen');
 
-// str = prompt('insert the expression at calculation',e.g. 2+2);
-str = '1.1*1.1+1+2+3-9';
-str = str.trim();
+//input selector
 
-//VALIDATE INPUT AND RUN
-
-if(isValidInput(str)) {
-    console.log(calMath(str));
-}
+const input = document.querySelector('#mathExpresion');
 
 //FUNCTIONS
 
@@ -135,3 +130,37 @@ function calMath(str) {
     }
 }
 
+//value off all mathematic buttons 
+
+const buttons = document.querySelectorAll('.button');
+buttons.forEach( (e) => e.addEventListener('click', () => {
+    input.value += e.textContent;
+}) );
+
+//button solve " = "
+
+const buttonSolve = document.querySelector('.solve');
+buttonSolve.addEventListener('click', () => {
+    //GET INPUT 
+    let str = input.value;
+    str = str.trim();
+    //VALIDATE INPUT AND RUN
+    if(isValidInput(str)) {
+        output.textContent = calMath(str);
+    }
+
+});
+
+//rest of buttons
+
+const buttonClear = document.querySelector('.clear');
+buttonClear.addEventListener('click', () => output.textContent = "" )
+
+const buttonDelete = document.querySelector('.delete');
+buttonDelete.addEventListener('click', () => input.value = "" )
+
+const buttonBackD = document.querySelector('.backd');
+buttonBackD.addEventListener('click', () => {
+    const inputText = input.value;
+    input.value = inputText.slice(0,inputText.length - 1);
+})
