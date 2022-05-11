@@ -151,16 +151,32 @@ buttonSolve.addEventListener('click', () => {
 
 });
 
+//if press enter button '=' run
+
+addEventListener('keydown',(e) => {
+    if(e.key == 'Enter') {
+        buttonSolve.click();
+        input.select();
+    }
+});
+
 //rest of buttons
 
 const buttonClear = document.querySelector('.clear');
 buttonClear.addEventListener('click', () => output.textContent = "" )
 
 const buttonDelete = document.querySelector('.delete');
-buttonDelete.addEventListener('click', () => input.value = "" )
+buttonDelete.addEventListener('click', () => {
+    input.value = "";
+    input.focus();
+});
 
 const buttonBackD = document.querySelector('.backd');
 buttonBackD.addEventListener('click', () => {
     const inputText = input.value;
     input.value = inputText.slice(0,inputText.length - 1);
-})
+    input.focus();
+});
+
+input.select();
+
